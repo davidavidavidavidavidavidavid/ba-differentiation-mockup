@@ -1,0 +1,261 @@
+.ba-conundrums-stage {
+  padding: 30px 34px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  background: var(--ba-parchment-100);
+}
+
+.ba-unit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* Demo-only dead end — clicking the Grade 3 arrow flags it as blocked
+   (via the coach bar) rather than navigating anywhere. */
+.ba-grade-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.ba-grade-nav__arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ba-parchment-200);
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--ba-ink-900);
+  transition: transform 0.12s ease;
+}
+
+.ba-grade-nav__arrow:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.ba-grade-nav__arrow--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ba-grade-nav__label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ba-ink-900);
+}
+
+/* Every tile — reached or locked — sits on the same island art; "locked"
+   is purely a dim/grayscale + padlock overlay on top of it, not a
+   different tile treatment. */
+.ba-unit-island {
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  padding: 0;
+  border-radius: var(--ba-radius-lg);
+  background: linear-gradient(180deg, var(--ba-water-200), var(--ba-water-300));
+  box-shadow: var(--ba-shadow-pop);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.ba-unit-island:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px -10px rgba(20, 30, 20, 0.35);
+}
+
+.ba-unit-island:disabled {
+  cursor: default;
+}
+
+.ba-unit-island__art {
+  position: absolute;
+  inset: 0;
+}
+
+.ba-unit-island__art svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ba-unit-island--locked .ba-unit-island__art svg {
+  filter: grayscale(0.85) brightness(0.75);
+  opacity: 0.7;
+}
+
+.ba-unit-island__num {
+  position: relative;
+  z-index: 1;
+  margin-top: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--ba-badge-dark);
+  background: radial-gradient(circle at 35% 30%, #fff, var(--ba-badge-light) 55%, var(--ba-badge-mid) 100%);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85), var(--ba-shadow-pop);
+}
+
+.ba-unit-island__lock {
+  position: relative;
+  z-index: 1;
+  margin-top: 24px;
+  font-size: 1.9rem;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
+}
+
+.ba-unit-island__sign {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  margin-bottom: 12px;
+  width: calc(100% - 24px);
+  background: var(--ba-parchment-100);
+  border-radius: 10px;
+  padding: 8px 10px 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.ba-unit-island--locked .ba-unit-island__sign {
+  background: rgba(253, 246, 232, 0.6);
+  box-shadow: none;
+}
+
+.ba-unit-island__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 1.25;
+  color: var(--ba-ink-900);
+}
+
+.ba-unit-island--locked .ba-unit-island__name {
+  color: var(--ba-locked-600);
+}
+
+.ba-unit-tierpies {
+  display: flex;
+  gap: 10px;
+}
+
+.ba-unit-tierpie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.ba-unit-tierpie__label {
+  font-size: 0.6rem;
+  letter-spacing: 0.02em;
+  color: var(--ba-locked-600);
+}
+
+.ba-tier-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ba-tier-filter__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ba-ink-700);
+}
+
+.ba-tier-filter__chip {
+  border: 2px solid var(--ba-parchment-edge);
+  background: var(--ba-white);
+  border-radius: var(--ba-radius-pill);
+  padding: 6px 12px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
+}
+
+.ba-tier-filter__chip:hover {
+  transform: translateY(-1px);
+}
+
+.ba-tier-filter__chip--active {
+  opacity: 1;
+  border-color: var(--ba-orange-600);
+  background: var(--ba-orange-100);
+}
+
+.ba-unit-questions__empty {
+  color: var(--ba-locked-600);
+  font-style: italic;
+}
+
+.ba-unit-question__flag {
+  font-size: 0.85rem;
+  background: var(--ba-warning-100);
+  color: var(--ba-warning-700);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin: 0;
+}
+
+.ba-unit-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 0.82rem;
+  color: var(--ba-ink-700);
+  border-top: 1px solid var(--ba-parchment-edge);
+  padding-top: 14px;
+}
+
+.ba-unit-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ba-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.ba-legend-dot--none {
+  background: var(--ba-locked-400);
+  opacity: 0.5;
+}
+
+.ba-legend-dot--partial {
+  background: var(--ba-locked-600);
+}
+
+.ba-legend-dot--done {
+  background: var(--ba-success-600);
+}
+
+@media (max-width: 860px) {
+  .ba-unit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

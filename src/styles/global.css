@@ -1,0 +1,428 @@
+@import "./tokens.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ba-ink-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ---------------------------------------------------------------- */
+/* Scene chrome                                                      */
+/* ---------------------------------------------------------------- */
+
+.ba-scene {
+  position: relative;
+  min-height: 100vh;
+  /* Extra bottom padding reserves room for the persistent coach bar
+     (position: fixed, ~160px with the enlarged Grogg art) so it never
+     overlaps page content. */
+  padding: 28px 24px 190px;
+  background: radial-gradient(
+      120% 90% at 50% -10%,
+      var(--ba-sage-500) 0%,
+      var(--ba-sage-600) 55%,
+      var(--ba-sage-700) 100%
+    );
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ba-scene__terrain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+      ellipse 340px 220px at 8% 15%,
+      rgba(255, 255, 255, 0.06),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 400px 260px at 92% 85%,
+      rgba(0, 0, 0, 0.08),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 260px 180px at 85% 10%,
+      rgba(255, 255, 255, 0.08),
+      transparent 60%
+    );
+}
+
+.ba-scene__topbar {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1180px;
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  align-items: start;
+  margin-bottom: 8px;
+}
+
+.ba-round-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ba-parchment-100);
+  color: var(--ba-ink-900);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--ba-shadow-pop);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ba-round-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px -8px rgba(20, 30, 20, 0.4);
+}
+
+.ba-round-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ba-banner {
+  justify-self: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 12px 44px;
+  min-width: 180px;
+  text-align: center;
+  background: var(--ba-parchment-100);
+  border-radius: 10px;
+  box-shadow: var(--ba-shadow-pop);
+}
+
+.ba-banner::before,
+.ba-banner::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  width: 26px;
+  height: calc(100% - 12px);
+  background: var(--ba-parchment-300);
+  /* Tuck both ribbon tails behind the main banner panel — .ba-banner is
+     the positioned stacking-context root here, so z-index:-1 puts these
+     behind its own background/border instead of painting on top of it. */
+  z-index: -1;
+}
+
+.ba-banner::before {
+  left: -14px;
+  /* Notch cut into the LEFT (outer/visible) edge of the left tail. */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 45% 50%);
+}
+
+.ba-banner::after {
+  right: -14px;
+  /* Mirror of ::before: the outer/visible edge for the right tail is its
+     OWN right edge, so the notch belongs on that side (100%), not the
+     left — previously this copied ::before's left-edge notch verbatim,
+     which distorted/mirrored the tail incorrectly. */
+  clip-path: polygon(0 0, 100% 0, 55% 50%, 100% 100%, 0 100%);
+}
+
+.ba-banner__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ba-wood-600);
+}
+
+.ba-banner__text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--ba-ink-900);
+}
+
+.ba-scene__stage-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+/* ---------------------------------------------------------------- */
+/* Stage (the big white rounded panel)                               */
+/* ---------------------------------------------------------------- */
+
+.ba-stage {
+  position: relative;
+  width: 100%;
+  background: var(--ba-white);
+  border-radius: var(--ba-radius-lg);
+  box-shadow: var(--ba-shadow-soft);
+  padding: 10px;
+}
+
+.ba-stage__inner {
+  border-radius: calc(var(--ba-radius-lg) - 10px);
+  overflow: hidden;
+  min-height: 480px;
+}
+
+/* ---------------------------------------------------------------- */
+/* Shared buttons                                                    */
+/* ---------------------------------------------------------------- */
+
+.ba-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  border-radius: var(--ba-radius-pill);
+  border: none;
+  cursor: pointer;
+  padding: 13px 28px;
+  font-size: 1rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+.ba-btn:active {
+  transform: translateY(1px);
+}
+
+.ba-btn--primary {
+  background: linear-gradient(180deg, var(--ba-orange-500), var(--ba-orange-600));
+  color: #fff;
+  box-shadow: 0 10px 20px -8px rgba(239, 143, 30, 0.55);
+}
+
+.ba-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px -8px rgba(239, 143, 30, 0.6);
+}
+
+.ba-btn--primary:disabled {
+  background: var(--ba-locked-400);
+  box-shadow: none;
+  color: #f4f2ee;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ba-btn--navy {
+  background: linear-gradient(180deg, var(--ba-navy-700), var(--ba-navy-900));
+  color: #fff;
+  box-shadow: 0 10px 20px -8px rgba(22, 55, 90, 0.55);
+}
+
+.ba-btn--navy:hover {
+  transform: translateY(-1px);
+}
+
+.ba-btn--success {
+  background: linear-gradient(180deg, #4fb054, var(--ba-success-600));
+  color: #fff;
+  box-shadow: 0 10px 20px -8px rgba(63, 145, 66, 0.5);
+}
+
+.ba-btn--success:hover {
+  transform: translateY(-1px);
+}
+
+.ba-btn--ghost {
+  background: var(--ba-parchment-100);
+  color: var(--ba-ink-900);
+  box-shadow: var(--ba-shadow-pop);
+}
+
+.ba-btn--ghost:hover {
+  transform: translateY(-1px);
+}
+
+.ba-btn--sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+/* ---------------------------------------------------------------- */
+/* Placeholder marker — used anywhere content is scaffolding only    */
+/* ---------------------------------------------------------------- */
+
+.ba-placeholder {
+  border: 2px dashed var(--ba-locked-400);
+  border-radius: var(--ba-radius-md);
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.02),
+    rgba(0, 0, 0, 0.02) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  padding: 18px;
+  color: var(--ba-locked-600);
+}
+
+.ba-placeholder__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--ba-locked-600);
+  padding: 3px 10px;
+  border-radius: var(--ba-radius-pill);
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------------------------------------- */
+/* Question pager — shared by Test-out, Challenge, Support            */
+/* ---------------------------------------------------------------- */
+
+.ba-qnav-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.ba-round-btn--sm {
+  width: 38px;
+  height: 38px;
+  font-size: 1rem;
+  background: var(--ba-parchment-200);
+}
+
+.ba-qnav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ba-qnav__item {
+  display: flex;
+  align-items: center;
+}
+
+.ba-qnav__divider {
+  width: 1px;
+  height: 26px;
+  background: var(--ba-parchment-edge);
+  margin-right: 8px;
+}
+
+.ba-qnav__tab {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ba-badge-dark);
+  background: radial-gradient(circle at 35% 30%, #fff, var(--ba-badge-light) 55%, var(--ba-badge-mid) 100%);
+  box-shadow: var(--ba-shadow-pop);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.ba-qnav__tab:hover {
+  transform: translateY(-1px);
+}
+
+.ba-qnav__tab--active {
+  box-shadow: 0 0 0 3px var(--ba-navy-700), var(--ba-shadow-pop);
+}
+
+.ba-qnav__tab--correct,
+.ba-qnav__tab--complete {
+  background: var(--ba-success-600);
+  color: #fff;
+}
+
+.ba-qnav__tab--incorrect {
+  background: var(--ba-danger-600);
+  color: #fff;
+}
+
+.ba-question-single {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Star difficulty rating — replaces raw point values wherever challenge-
+   pool problems are shown (see utils/tier.js). */
+.ba-star-rating {
+  display: inline-flex;
+  gap: 1px;
+}
+
+.ba-star-rating__star {
+  font-size: 0.85em;
+  color: var(--ba-locked-400);
+}
+
+.ba-star-rating__star--filled {
+  color: var(--ba-orange-600);
+}
+
+/* ---------------------------------------------------------------- */
+/* Shared "answer + reveal" action row (Check answer / Show answer),    */
+/* used on the Conundrums unit page and Challenge's competition problems */
+/* ---------------------------------------------------------------- */
+
+.ba-answer-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Flags an answer-key/solution-reveal control as something a student
+   wouldn't normally see — stakeholder/teacher perspective only. */
+.ba-teacher-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ba-navy-700);
+  background: var(--ba-sky-200);
+  padding: 3px 10px;
+  border-radius: var(--ba-radius-pill);
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .ba-scene {
+    padding: 18px 12px 130px;
+  }
+  .ba-scene__topbar {
+    grid-template-columns: 44px 1fr 44px;
+  }
+}

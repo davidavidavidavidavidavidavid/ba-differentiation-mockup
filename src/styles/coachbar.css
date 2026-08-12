@@ -1,0 +1,55 @@
+/* Persistent Grogg coach bar — always on screen, never a popup. Deliberately
+   plain: Finger Paint font, black background, lilac text, Grogg's face
+   pinned to a fixed spot on the left and nothing else decorative (no
+   emoji/icons). Icon stays put; only the text next to it changes, so it
+   never appears to drift as message length changes (hence
+   justify-content: flex-start + left-aligned text, not centered). Sits
+   above absolutely everything since the demo-runner should always be able
+   to read it. */
+
+.ba-coach-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 500;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 16px 28px;
+  background: #000;
+  border-top: 2px solid #c8a2c8;
+  box-shadow: 0 -6px 18px -10px rgba(0, 0, 0, 0.5);
+}
+
+.ba-coach-bar__face {
+  flex: none;
+  width: 126px;
+  height: 126px;
+  object-fit: contain;
+}
+
+.ba-coach-bar__text {
+  font-family: "Finger Paint", cursive;
+  color: #c8a2c8;
+  font-size: 1.4rem;
+  line-height: 1.35;
+  text-align: left;
+  max-width: 1050px;
+}
+
+@media (max-width: 860px) {
+  .ba-coach-bar {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+  .ba-coach-bar__face {
+    width: 90px;
+    height: 90px;
+  }
+  .ba-coach-bar__text {
+    font-size: 1.05rem;
+  }
+}

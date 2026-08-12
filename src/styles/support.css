@@ -1,0 +1,151 @@
+.ba-support-stage {
+  padding: 30px 34px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--ba-parchment-100);
+}
+
+.ba-support-intro {
+  margin: 0;
+  color: var(--ba-ink-700);
+  font-size: 0.95rem;
+  max-width: 68ch;
+}
+
+.ba-scaffold-problem {
+  background: var(--ba-white);
+  border-radius: var(--ba-radius-md);
+  box-shadow: var(--ba-shadow-pop);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ba-scaffold-problem__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ba-scaffold-problem__index {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-family: var(--font-display);
+  color: #fff;
+  background: var(--ba-forest-600);
+}
+
+.ba-scaffold-problem__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.ba-worked-tag {
+  margin-left: auto;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ba-forest-800);
+  background: var(--ba-water-200);
+  padding: 4px 10px;
+  border-radius: var(--ba-radius-pill);
+}
+
+.ba-scaffold-callout {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ba-navy-900);
+  background: var(--ba-sky-200);
+  border-radius: 10px;
+  padding: 9px 14px;
+}
+
+/* Plain instructional line — no speech-bubble/avatar chrome (that voice
+   now lives only in the persistent Grogg coach bar); this keeps the
+   worked-example text itself without the character-dialogue framing. */
+.ba-scaffold-note {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--ba-ink-900);
+}
+
+.ba-scaffold-reveal-btn {
+  align-self: flex-start;
+}
+
+.ba-scaffold-reveal {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ba-ink-900);
+  background: var(--ba-parchment-200);
+  border-radius: 10px;
+  padding: 9px 14px;
+  align-self: flex-start;
+}
+
+.ba-scaffold-blanks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
+  padding-top: 4px;
+  border-top: 1px solid var(--ba-parchment-edge);
+}
+
+.ba-scaffold-blank {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ba-scaffold-blank label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.ba-scaffold-blank input {
+  width: 84px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 2px solid var(--ba-parchment-edge);
+  background: #fff;
+}
+
+.ba-scaffold-blank input:focus {
+  outline: 2px solid var(--ba-sky-400);
+  outline-offset: 1px;
+}
+
+.ba-scaffold-blank__status {
+  font-weight: 700;
+}
+
+.ba-scaffold-blank__status--correct {
+  color: var(--ba-success-600);
+}
+
+.ba-scaffold-blank__status--incorrect {
+  color: var(--ba-danger-600);
+}
+
+.ba-support-footer {
+  display: flex;
+  justify-content: flex-end;
+}

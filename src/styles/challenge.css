@@ -1,0 +1,287 @@
+.ba-challenge-stage {
+  padding: 30px 34px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--ba-parchment-100);
+}
+
+.ba-challenge-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ba-challenge-intro p {
+  margin: 4px 0 0;
+  color: var(--ba-ink-700);
+  max-width: 62ch;
+}
+
+/* Static per spec — no real scoring/tracking logic behind this yet. */
+.ba-score-display {
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--ba-navy-700);
+  background: var(--ba-parchment-200);
+  padding: 8px 18px;
+  border-radius: var(--ba-radius-pill);
+  white-space: nowrap;
+}
+
+.ba-section-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ba-section-title__count {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--ba-badge-dark);
+  padding: 2px 10px;
+  border-radius: var(--ba-radius-pill);
+}
+
+.ba-problem-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ba-group-chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--ba-radius-pill);
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.ba-group-chip--lesson {
+  background: var(--ba-badge-dark);
+}
+
+.ba-group-chip--competition {
+  background: var(--ba-orange-600);
+}
+
+.ba-problem-card {
+  background: var(--ba-white);
+  border-radius: var(--ba-radius-md);
+  box-shadow: var(--ba-shadow-pop);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 2px solid transparent;
+}
+
+.ba-problem-card--done {
+  border-color: var(--ba-success-600);
+}
+
+.ba-problem-card--clickable {
+  cursor: pointer;
+}
+
+.ba-problem-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.ba-problem-card__prompt {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.ba-problem-card__source {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--ba-locked-600);
+}
+
+.ba-solution-toggle {
+  align-self: flex-start;
+}
+
+.ba-solution-box {
+  background: var(--ba-parchment-200);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.ba-solution-box strong {
+  color: var(--ba-navy-700);
+}
+
+/* digit-arrange puzzle */
+
+.ba-digit-puzzle {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ba-digit-puzzle__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ba-digit-blank {
+  width: 44px;
+  height: 52px;
+  border-radius: 8px;
+  border: 2px solid var(--ba-badge-mid);
+  background: var(--ba-badge-light);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ba-badge-dark);
+  cursor: pointer;
+}
+
+.ba-digit-blank:disabled {
+  cursor: default;
+}
+
+.ba-digit-blank--filled {
+  background: #fff;
+}
+
+.ba-digit-puzzle__op {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-left: 6px;
+  color: var(--ba-ink-900);
+}
+
+.ba-digit-puzzle__pool {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 46px;
+}
+
+.ba-digit-chip {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(180deg, var(--ba-orange-500), var(--ba-orange-600));
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: var(--ba-shadow-pop);
+}
+
+.ba-digit-puzzle__feedback {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.ba-digit-puzzle__feedback--good {
+  color: var(--ba-success-600);
+}
+
+.ba-digit-puzzle__feedback--bad {
+  color: var(--ba-danger-600);
+}
+
+/* pyramid puzzle — hand-built staircase grid, see PyramidPuzzle.jsx */
+
+.ba-pyramid {
+  display: grid;
+  grid-template-columns: repeat(9, 52px);
+  grid-auto-rows: 52px;
+  gap: 4px;
+  justify-content: center;
+  padding: 8px 0 4px;
+}
+
+.ba-pyramid__cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ba-parchment-200);
+  border: 2px solid var(--ba-parchment-edge);
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--ba-ink-900);
+}
+
+.ba-pyramid__cell--circled::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 3px solid var(--ba-orange-600);
+  border-radius: 50%;
+}
+
+/* honeycomb puzzle — hand-built branching lattice, see HoneycombPuzzle.jsx */
+
+.ba-honeycomb-wrap {
+  overflow-x: auto;
+  padding: 4px 0;
+}
+
+.ba-honeycomb {
+  display: block;
+}
+
+.ba-honeycomb__edge {
+  stroke: var(--ba-forest-500);
+  stroke-width: 2;
+  opacity: 0.55;
+}
+
+.ba-honeycomb__node {
+  fill: #fff;
+  stroke: var(--ba-forest-600);
+  stroke-width: 2.5;
+}
+
+.ba-honeycomb__node-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  fill: var(--ba-ink-900);
+}
+
+.ba-honeycomb__endpoint {
+  fill: var(--ba-orange-600);
+}
+
+.ba-honeycomb__endpoint-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 14px;
+  fill: #fff;
+}

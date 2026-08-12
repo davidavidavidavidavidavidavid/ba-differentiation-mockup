@@ -1,0 +1,72 @@
+/*
+  BAC-inspired design tokens.
+  Palette grounded in two real reference points:
+  1. The live BAC lesson-map screenshot (sage outdoor bg, parchment/wood
+     clipboard, aqua water, forest greens, cream banner ribbon).
+  2. The navy / orange / sky-blue wave graphic used in official BAC
+     document templates — reused here as the accent triad for anything
+     that is NOT part of the existing lesson-map chrome (the new
+     "Test out" CTA, badges, progress states) so new UI reads as an
+     intentional addition rather than a re-skin of existing elements.
+*/
+:root {
+  /* outdoor / map scene */
+  --ba-sage-700: #4f7a6c;
+  --ba-sage-600: #6f9a89;
+  --ba-sage-500: #86a99c;
+  --ba-water-200: #dff3f1;
+  --ba-water-300: #c8ecea;
+  --ba-water-line: #8fd3ce;
+  --ba-forest-800: #2f5b3d;
+  --ba-forest-700: #3c7248;
+  --ba-forest-600: #4f8c53;
+  --ba-forest-500: #6ba55e;
+
+  /* clipboard / parchment */
+  --ba-wood-900: #4a3220;
+  --ba-wood-700: #6b4a34;
+  --ba-wood-600: #815a3f;
+  --ba-wood-peg: #d8b78b;
+  --ba-parchment-100: #fdf6e8;
+  --ba-parchment-200: #f9edd4;
+  --ba-parchment-300: #f3e0bd;
+  --ba-parchment-edge: #e7cd9c;
+  --ba-ink-900: #2a2320;
+  --ba-ink-700: #4a4038;
+
+  /* lesson-pill badges (existing UI, unchanged) */
+  --ba-badge-light: #d7edf8;
+  --ba-badge-mid: #8fc7e6;
+  --ba-badge-dark: #2c6e9e;
+
+  /* brand accent triad (new UI: CTA, tags, focus states) */
+  --ba-navy-900: #16375a;
+  --ba-navy-700: #1d4d80;
+  --ba-orange-600: #ef8f1e;
+  --ba-orange-500: #f7a53a;
+  --ba-orange-100: #fdead0;
+  --ba-sky-400: #6fcbe8;
+  --ba-sky-200: #d7f2fa;
+
+  /* semantic */
+  --ba-success-600: #3f9142;
+  --ba-success-100: #e4f5e1;
+  --ba-danger-600: #d0562f;
+  --ba-danger-100: #fbe4da;
+  --ba-warning-700: #9a6a1f;
+  --ba-warning-100: #f6ead0;
+  --ba-locked-400: #a9a49a;
+  --ba-locked-600: #857f73;
+
+  --ba-white: #fffdf8;
+  --ba-shadow-soft: 0 18px 40px -18px rgba(30, 40, 30, 0.45);
+  --ba-shadow-card: 0 10px 24px -12px rgba(40, 30, 10, 0.35);
+  --ba-shadow-pop: 0 6px 14px -6px rgba(20, 30, 20, 0.3);
+
+  --ba-radius-lg: 28px;
+  --ba-radius-md: 18px;
+  --ba-radius-pill: 999px;
+
+  --font-display: "Bitter", Georgia, "Times New Roman", serif;
+  --font-body: "Roboto", "Helvetica Neue", Arial, sans-serif;
+}

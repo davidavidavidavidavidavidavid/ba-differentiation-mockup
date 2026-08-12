@@ -1,0 +1,143 @@
+.ba-challenge-choice-stage {
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--ba-parchment-100);
+}
+
+.ba-confirm-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--ba-success-100);
+  border: 2px solid var(--ba-success-600);
+  border-radius: var(--ba-radius-md);
+  padding: 16px 20px;
+}
+
+.ba-confirm-banner__badge {
+  flex: none;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--ba-success-600);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.ba-confirm-banner__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.ba-confirm-banner__sub {
+  margin: 2px 0 0;
+  color: var(--ba-ink-700);
+  font-size: 0.92rem;
+}
+
+/* Challenge choice — "Today's Challenge" (dominant) and Clod's Conundrums
+   sit side by side as one cohesive choice row, rather than a big primary
+   card with an awkward gap before a small secondary one. Neither gates
+   the other. */
+
+.ba-choice-intro {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--ba-ink-900);
+  max-width: 62ch;
+}
+
+.ba-choice-row {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.ba-choice-card {
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--ba-radius-lg);
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.ba-choice-card:hover {
+  transform: translateY(-2px);
+}
+
+.ba-choice-card__eyebrow {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ba-choice-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.ba-choice-card__sub {
+  line-height: 1.45;
+}
+
+.ba-choice-card--primary {
+  flex: 1.5;
+  background: linear-gradient(160deg, var(--ba-orange-500), var(--ba-orange-600));
+  color: #fff;
+  box-shadow: 0 16px 30px -12px rgba(239, 143, 30, 0.55);
+}
+
+.ba-choice-card--primary .ba-choice-card__eyebrow {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ba-choice-card--primary .ba-choice-card__title {
+  font-size: 1.5rem;
+}
+
+.ba-choice-card--primary .ba-choice-card__sub {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.95rem;
+}
+
+.ba-choice-card--secondary {
+  flex: 1;
+  background: var(--ba-white);
+  border: 2px solid var(--ba-parchment-edge);
+  box-shadow: var(--ba-shadow-pop);
+  justify-content: center;
+}
+
+.ba-choice-card--secondary .ba-choice-card__eyebrow {
+  color: var(--ba-navy-700);
+}
+
+.ba-choice-card--secondary .ba-choice-card__title {
+  font-size: 1.1rem;
+  color: var(--ba-ink-900);
+}
+
+.ba-choice-card--secondary .ba-choice-card__sub {
+  font-size: 0.85rem;
+  color: var(--ba-ink-700);
+}
+
+@media (max-width: 720px) {
+  .ba-choice-row {
+    flex-direction: column;
+  }
+}
